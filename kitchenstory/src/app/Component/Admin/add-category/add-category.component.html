@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="row">
+        <div class="col-6 mx-auto mt-3 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="text-center">Add a Category</h4>
+                </div>
+                <div class="card-body">
+                    <form #Categoryaddtion="ngForm">
+                    
+                        <div class="form-group">
+                            <label for="lname"> Category Name:</label>
+                            <input type="text" class="form-control" required #lname="ngModel"
+                                placeholder="Enter  category name" id="lname" name="name"
+                                [(ngModel)]="tag.name" ngModel>
+                            <span *ngIf="lname.invalid && lname.touched" style="color:red">Please enter a valid
+                                  category.</span>
+                        </div>
+                        <div class="text-center">
+                            <div class="btn-group">
+                                <button (click)="onSubmit()" class="btn btn-primary"
+                                    [disabled]="Categoryaddtion.invalid" data-toggle="modal"
+                                    data-target="#lModal">Add Category</button>
+                                <!-- The Modal -->
+                                <div class="modal fade" id="lModal">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Add a new Category</h4>
+                                                <button type="button" class="close" (click)="onClick()"
+                                                    data-dismiss="modal">&times;</button>
+                                            </div>
+
+                                            <!-- Modal body -->
+                                            <div class="modal-body">
+                                                <span *ngIf="isValid" style="color:green">{{message}}</span>
+                                                <span *ngIf="!isValid" style="color: red">{{message}}</span>
+                                            </div>
+
+                                            <!-- Modal footer -->
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                                    (click)="onClick()">Close</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="reset" class="btn btn-danger">Reset</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
